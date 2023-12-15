@@ -1,0 +1,75 @@
+﻿<Window x:Class="Call_logger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Call_logger"
+        xmlns:userControls="clr-namespace:Call_logger.View"
+        xmlns:pages="clr-namespace:Call_logger.View.pages"
+        
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="1080" MinHeight="600" MinWidth="900" MaxHeight="1080" MaxWidth="1920">
+    <Window.Resources>
+        <DataTemplate x:Key="All_logs">
+            <pages:All_Logs/>
+        </DataTemplate>
+        <DataTemplate x:Key="Delete_logs">
+            <pages:Delete_logs/>
+        </DataTemplate>
+        <DataTemplate x:Key="Latest_log">
+            <pages:Latest_log/>
+        </DataTemplate>
+        <DataTemplate x:Key="New_log">
+            <pages:New_log/>
+        </DataTemplate>
+        <DataTemplate x:Key="Users">
+            <pages:Users/>
+        </DataTemplate>
+        <DataTemplate x:Key="On_Start" x:Name="On_Start">
+            <pages:On_Start/>
+        </DataTemplate>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="75*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <!--Menu-->
+        <userControls:Title Grid.Row="0"/>
+
+        <!--Main Page-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="80*"/>
+            </Grid.ColumnDefinitions>
+            <!--Page selector-->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Content="New Log" FontSize="35" Name="New_log" Click="New_log_Click"/>
+                <Button Grid.Row="1" Content="Latest Log" FontSize="35" Name="Latest_log" Click="Latest_log_Click"/>
+                <Button Grid.Row="2" Content="All Logs" FontSize="35" Name="All_logs" Click="All_logs_Click"/>
+                <Button Grid.Row="3" Content="Users" FontSize="35" Name="Users" Click="Users_Click"/>
+                <Button Grid.Row="4" Content="Delete Logs" FontSize="32" Name="Delete_logs" Click="Delete_logs_Click"/>
+                <Button Grid.Row="5" Content="Quit" FontSize="35" Name="Home_Quit" Click="Home_Quit_Click"/>
+            </Grid>
+
+            <!--ContentControl for pages-->
+            <ContentControl Name="ContentContainer" Grid.Column="1"/>
+        </Grid>
+        
+        <!--Footer-->
+        <userControls:footer Grid.Row="2"/>
+
+    </Grid>
+</Window>
